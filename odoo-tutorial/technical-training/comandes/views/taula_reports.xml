@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+    <record id="vista_informe_comandes_tree" model="ir.ui.view">
+        <field name="name">ventes.comanda.report.tree</field>
+        <field name="model">ventes.comanda.report</field>
+        <field name="arch" type="xml">
+            <tree string="Informe de comandes">
+                <field name="comercial"/>
+                <field name="estat"/>
+                <field name="nombre_comandes"/>
+                <field name="import_total"/>
+            </tree>
+        </field>
+    </record>
+
+     <record id="action_informe_comandes" model="ir.actions.act_window">
+        <field name="name">Informe de comandes</field>
+        <field name="res_model">ventes.comanda.report</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="vista_informe_comandes_tree"/>
+    </record>
+
+    <menuitem id="menu_custom_report" name="Informe de comandes" parent="sale.sale_menu_root" action="action_informe_comandes" sequence="60"/>
+    </data>
+
+</odoo>

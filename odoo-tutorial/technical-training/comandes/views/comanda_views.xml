@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="view_sale_order_inherit" model="ir.ui.view">
+            <field name="name">sale.order.inherit.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_order']" position="after">
+                        <field name="order_lines_count"/> 
+                        <field name="correu_client"/> 
+                </xpath>            
+            </field>
+        </record>
+
+        <template id="view_report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//p[@name='order_note']" position="after">
+                <p>Articles diferents: 
+                    <span t-field="doc.order_lines_count"/>
+                </p>
+                <p>Correu del client: 
+                    <span t-field="doc.correu_client"/>
+                </p>
+            </xpath>
+        </template>
+    </data>
+</odoo>
